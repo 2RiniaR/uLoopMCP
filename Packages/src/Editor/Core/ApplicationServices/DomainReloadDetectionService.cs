@@ -121,15 +121,9 @@ namespace io.github.hatayama.uLoopMCP
 
         private static void CreateLockFile()
         {
-            string lockPath = LockFilePath;
-            string tempDir = Path.GetDirectoryName(lockPath);
-
-            if (!Directory.Exists(tempDir))
-            {
-                return;
-            }
-
-            File.WriteAllText(lockPath, System.DateTime.UtcNow.ToString("o"));
+            // Disabled: Lock file creation causes issues when server doesn't restart properly
+            // The lock file deletion mechanism in McpBridgeServer.Start() is not reliable
+            // See: https://github.com/hatayama/uLoopMCP/issues/XXX
         }
 
         /// <summary>
